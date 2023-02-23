@@ -38,7 +38,7 @@
               sm="6"
             >
               <v-text-field
-                v-model="form.lastName"
+                v-model="form.secondName"
                 label="Segundo nombre"
                 :rules="[required]"
                 clearable
@@ -74,12 +74,13 @@
           </v-row>
         </v-container>
         <v-container>
-          <v-select
-            v-model="form.option"
-            :items="options"
-            label="Asistira?"
-            :rules="[required]"
-          ></v-select>
+            <v-select
+              v-model="form.option"
+              :items="options"
+              label="Asistira?"
+              variant="solo"
+              :rules="[required]"
+            ></v-select>
         </v-container>
         <v-btn
           :disabled="!formComplete"
@@ -128,14 +129,11 @@ export default {
   methods: {
     async submit() {  // complete with API when you finish the controller in laravel
       try {
-        console.log('send request...')
         this.loading = true
-        setTimeout(() => {
-          this.mock = true
-        }, 2000);
 
-        if (this.mock) {
-          console.log('continue process...')
+        const resp = axios.get('https://travel-dummy-api.netlify.app/brazil.json') // dummy request
+
+        if (resp) {
           this.request()
           this.redirect()
         }
