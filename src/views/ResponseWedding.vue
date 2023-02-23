@@ -66,5 +66,19 @@ export default {
       ],
     }
   },
+  computed: {
+    startJourney() {
+      console.log('start journey...')
+      this.pageScroll
+    },
+    pageScroll() {
+      console.log('scrolling...')
+      window.scrollBy(0,1)
+      let scrolldealy = setTimeout(this.pageScroll, 30);
+    }
+  },
+  mounted() {
+    this.startJourney
+  },
 }
 </script>
