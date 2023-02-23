@@ -8,6 +8,10 @@ const routes = [
     component: () => import('../views/Wedding.vue')
   },
   {
+    path: '/invitados',
+    component: () => import('../views/ResponseWedding.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
