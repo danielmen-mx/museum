@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "eventbus": "^0.0.3",
+    "mdi-icons": "^1.0.1",
     "pinia": "^2.0.28",
-    "vue": "^3.2.45",
+    "vue": "^3.2.47",
     "vue-autoscroll": "^1.2.1",
     "vue-axios": "^3.5.2",
     "vue-router": "^4.1.6",
