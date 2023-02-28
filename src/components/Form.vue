@@ -133,7 +133,7 @@ export default {
 
         this.request()
         this.$emit('snackbarNotify', {type: 'success', message: resp.data.message})
-        this.redirect()
+        this.redirect(resp.data.data.id)
       } catch (error) {
         console.log(error)
         this.$emit('snackbarNotify', {type: 'error', message: error.response.data.exception})
@@ -141,8 +141,8 @@ export default {
 
       this.loading = false
     },
-    redirect() {
-      setTimeout( () => this.$router.push({ path: '/invitados'}), 5000);
+    redirect(id) {
+      setTimeout( () => this.$router.push({ path: `/invitados/${id}`}), 5000);
     },
     required (v) {
       return !!v || 'Field is required'
