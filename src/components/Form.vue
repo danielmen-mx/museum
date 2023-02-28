@@ -11,7 +11,7 @@
         Ingresa tus nombres y apellidos y selecciona tu asistencia.<br>
       </span>
       <span class="text-subtitle-2 grey-lighten-4">
-        Si tus apellidos son (ejemplo) "de la Cruz", "De los Santos" etc... escribelo dentro del mismo input.
+        Si tus apellidos o nombre son (ejemplo) "de Maria", "De los Santos" etc... escribelo dentro del mismo input.
       </span>
     </v-card-text>
 
@@ -27,7 +27,7 @@
               sm="6"
             >
               <v-text-field
-                v-model="form.firstName"
+                v-model="form.first_name"
                 label="Primer nombre"
                 :rules="[required]"
                 clearable
@@ -38,9 +38,8 @@
               sm="6"
             >
               <v-text-field
-                v-model="form.secondName"
+                v-model="form.second_name"
                 label="Segundo nombre"
-                :rules="[required]"
                 clearable
               ></v-text-field>
             </v-col>
@@ -54,7 +53,7 @@
               sm="6"
             >
               <v-text-field
-                v-model="form.firstLastName"
+                v-model="form.first_last_name"
                 label="Primer apellido"
                 :rules="[required]"
                 clearable
@@ -65,9 +64,8 @@
               sm="6"
             >
               <v-text-field
-                v-model="form.secondLastName"
+                v-model="form.second_last_name"
                 label="Segundo apellido"
-                :rules="[required]"
                 clearable
               ></v-text-field>
             </v-col>
@@ -75,7 +73,7 @@
         </v-container>
         <v-container>
             <v-select
-              v-model="form.option"
+              v-model="form.assistance"
               :items="options"
               label="Asistira?"
               variant="solo"
@@ -114,11 +112,11 @@ export default {
       loading: false,
       formComplete: false,
       form: {
-        firstName: '',
-        secondName: '',
-        firstLastName: '',
-        secondLastName: '',
-        option: '',
+        first_name: null,
+        second_name: null,
+        first_last_name: null,
+        second_last_name: null,
+        assistance: null,
       },
       options: [
         'Asistiremos',
@@ -127,24 +125,24 @@ export default {
     }
   },
   methods: {
-    async submit() {  // complete with API when you finish the controller in laravel
+    async submit() {
       try {
         this.loading = true
 
-        const resp = axios.get('https://travel-dummy-api.netlify.app/brazil.json') // dummy request
+        const resp = await axios.post('http://localhost:8000/api/guests', this.form) // test request
 
-        if (resp) {
-          this.request()
-          this.redirect()
-        }
+        this.request()
+        this.$emit('snackbarNotify', {type: 'success', message: resp.data.message})
+        this.redirect()
       } catch (error) {
         console.log(error)
+        this.$emit('snackbarNotify', {type: 'error', message: error.response.data.exception})
       }
 
       this.loading = false
     },
     redirect() {
-      this.$router.push({ path: '/invitados'})
+      setTimeout( () => this.$router.push({ path: '/invitados'}), 5000);
     },
     required (v) {
       return !!v || 'Field is required'
