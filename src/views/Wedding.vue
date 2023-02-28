@@ -8,7 +8,7 @@
   <Plan />
   <Map />
   <Advice class="mt-10" />
-  <Answer class="mb-10" />
+  <Answer />
   <!-- <Form :request="openForm"/> -->
   <Footer />
 </template>
@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      openForm: true
+      openForm: true,
     }
   },
 }
