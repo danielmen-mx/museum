@@ -12,16 +12,6 @@
           <v-card-text class="text-center">Gracias por confirmar.</v-card-text>
           <!-- <span class="text-h3 pt-6 text-center" id="countdown"></span> -->
           <v-card-text class="text-center">Esperamos emocionados ese gran día.</v-card-text>
-          <!-- <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-              color="green-darken-1"
-              variant="text"
-              @click="dialog = false"
-            >
-              Entendido
-            </v-btn>
-          </v-card-actions> -->
         </v-card>
       </v-dialog>
     </v-row>
@@ -61,18 +51,13 @@ export default {
   data() {
     return {
       dialog: true,
-      images: [
-
-      ],
     }
   },
   computed: {
     startJourney() {
-      console.log('start journey...')
       this.pageScroll
     },
     pageScroll() {
-      console.log('scrolling...')
       window.scrollBy(0,1)
       let scrolldealy = setTimeout(this.pageScroll, 30);
     }
