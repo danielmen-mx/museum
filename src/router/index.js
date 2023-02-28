@@ -8,8 +8,10 @@ const routes = [
     component: () => import('../views/Wedding.vue')
   },
   {
-    path: '/invitados',
-    component: () => import('../views/ResponseWedding.vue')
+    path: '/invitados/:id',
+    name: 'guests',
+    component: () => import('../views/ResponseWedding.vue'),
+    props: route => ({...route.params, id: parseInt(route.params.id)})
   },
   {
     path: '/tabla',
