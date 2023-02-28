@@ -7,8 +7,8 @@
         width="auto"
       >
         <v-card>
-          <v-card-title class="text-h5">Hola inserte-nombre!</v-card-title>
-          <v-card-text class="text-center">Su numero de pases es inserte-numero.</v-card-text>
+          <v-card-title class="text-h5">Hola {{name}}!</v-card-title>
+          <v-card-text class="text-center">Su numero de pases es {{tickets}}.</v-card-text>
           <v-card-text class="text-center">Gracias por confirmar.</v-card-text>
           <!-- <span class="text-h3 pt-6 text-center" id="countdown"></span> -->
           <v-card-text class="text-center">Esperamos emocionados ese gran día.</v-card-text>
@@ -51,6 +51,16 @@ export default {
   data() {
     return {
       dialog: true,
+      guestId: null,
+      name: '',
+      tickets: ''
+    }
+  },
+  methods: {
+    getGuest() {
+      console.log('the id is: ',this.guestId)
+      this.name = 'Daniel'
+      this.tickets = 2
     }
   },
   computed: {
@@ -63,6 +73,8 @@ export default {
     }
   },
   mounted() {
+    this.guestId = this.$route.params.id
+    this.getGuest()
     this.startJourney
   },
 }
