@@ -23,12 +23,13 @@ export default {
 
         if (document.getElementById("countdown")) {
           document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+          if (distance < 0) {
+            clearInterval(this.interval);
+            document.getElementById("countdown").innerHTML = "Gracias por acompañarnos!";
+          }
         }
 
-        if (distance < 0) {
-          clearInterval(this.interval);
-          document.getElementById("countdown").innerHTML = "Gracias por acompañarnos!";
-        }
       }, 1000);
     },
   },
