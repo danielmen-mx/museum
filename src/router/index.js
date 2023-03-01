@@ -14,8 +14,14 @@ const routes = [
     props: route => ({...route.params, id: parseInt(route.params.id)})
   },
   {
-    path: '/tabla',
-    component: () => import('../views/ResponsesTable.vue')
+    path: '/manager',
+    component: () => import('../views/Navigation.vue'),
+    children: [
+      {
+        path: ':id',
+        component: () => import('../components/CreateEdit.vue')
+      }
+    ]
   },
   {
     path: '/about',
