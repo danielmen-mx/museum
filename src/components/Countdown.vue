@@ -33,9 +33,6 @@ export default {
       }, 1000);
     },
   },
-  beforeDestroy() {
-    console.log('redirecting or destroying...')
-  },
   watch: {
     '$route.params': {
         handler: function(params) {
