@@ -57,7 +57,7 @@
               variant="flat"
               color="red"
               class="ml-1"
-              @click=""
+              @click="remove(guest.id)"
             >
               <span class="text-subtitle-2">Eliminar</span>
             </v-btn>
@@ -95,7 +95,10 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.get('http://localhost:8000/api/guest-lists')
+        const resp = await axios.delete('http://localhost:8000/api/guest-lists' + id)
+
+        this.$emit('snackbarNotify', {type: 'success', message: resp.data.message})
+        this.getGuestList
       } catch (error) {
         console.log(error);
       }

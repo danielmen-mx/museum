@@ -25,7 +25,7 @@
 
       <v-main style="height: 100vh">
         <Responses v-if="response" />
-        <Table v-if="table" @createEdit="openCreateEdit" />
+        <Table v-if="table" @snackbarNotify="notify" @createEdit="openCreateEdit" />
         <Edit v-if="edit" :guest-id="guestId" @snackbarNotify="notify" @closeAll="changeLayout" />
         <Span v-if="response == false && table == false && edit == false" class="text-h3 "/>
       </v-main>
