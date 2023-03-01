@@ -3,23 +3,24 @@
     v-model="visible"
     :color="color"
     :timeout="timeout"
-    @snackbar-notify="notify($data)"
   >
-    <div class="d-flex align-center justify-space-between">
-      <span class="body-1">{{message}}</span>
+    {{message}}
+    <template v-slot:actions>
       <v-btn
-          dark
-          text
-          icon
           @click="visible = false"
       >
-        <v-icon>mdi-close</v-icon>
+        Cerrar
       </v-btn>
-    </div>
+    </template>
 	</v-snackbar>
 </template>
 <script>
 export default {
+  props: {
+    execution: {
+      type: Boolean
+    }
+  },
   data: () => ({
     visible: false,
     message: '',
@@ -40,7 +41,7 @@ export default {
     }
   },
   mounted(){
-    // how listen event dispatch from form ?
+    if (this.execution == true) notify()
   }
 }
 </script>
