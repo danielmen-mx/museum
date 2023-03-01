@@ -8,7 +8,7 @@
       >
         <v-list>
           <v-list-item
-            prepend-avatar="https://randomuser.me/api/portraits/women/87.jpg"
+            prepend-avatar="/public/images/bar.jpg"
             title="Daniel & Jhovana"
             @click="changeLayout()"
           ></v-list-item>

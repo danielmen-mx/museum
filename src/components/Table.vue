@@ -16,13 +16,6 @@
       </v-btn>
     </div>
     <v-divider></v-divider>
-    <v-data-table-server
-      v-if="loading"
-      item-key="name"
-      class="elevation-1"
-      loading
-      loading-text="Loading... Please wait"
-    ></v-data-table-server>
     <v-table
       height="80vh"
       fixed-header

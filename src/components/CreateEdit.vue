@@ -58,7 +58,7 @@
         @click="closeAll"
         class="ml-1"
       >
-        <span class="text-subtitle-2">Eliminar</span>
+        <span class="text-subtitle-2">Cancelar</span>
       </v-btn>
     </v-form>
   </v-card>
