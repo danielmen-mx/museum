@@ -16,6 +16,13 @@
       </v-btn>
     </div>
     <v-divider></v-divider>
+    <v-data-table-server
+      v-if="loading"
+      item-key="name"
+      class="elevation-1"
+      loading
+      loading-text="Loading... Please wait"
+    ></v-data-table-server>
     <v-table
       height="80vh"
       fixed-header
@@ -95,18 +102,16 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.delete('http://localhost:8000/api/guest-lists' + id)
+        const resp = await axios.delete('http://localhost:8000/api/guest-lists/' + id)
 
-        this.$emit('snackbarNotify', {type: 'success', message: resp.data.message})
-        this.getGuestList
+        this.$emit('snackbarNotify', {type: 'success', message: resp.data.message, action: 'delete'})
+        this.getGuestList()
       } catch (error) {
         console.log(error);
       }
 
       this.loading = false
-    }
-  },
-  computed: {
+    },
     async getGuestList() {
       try {
         this.loading = true
@@ -122,7 +127,7 @@ export default {
     }
   },
   mounted() {
-    this.getGuestList
+    this.getGuestList()
   },
 }
 </script>

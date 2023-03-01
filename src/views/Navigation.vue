@@ -91,7 +91,7 @@ export default {
         this.visible = true;
       })
 
-      this.changeLayout()
+      this.changeLayout('table')
     }
   },
   mounted() {

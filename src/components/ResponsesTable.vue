@@ -8,25 +8,36 @@
     >
       <thead>
         <tr>
-          <th class="text-left">
+          <th class="text-left text-h6">
             Nombre
           </th>
-          <th class="text-left">
+          <th class="text-left text-h6">
             Asistencia
           </th>
-          <th class="text-left">
+          <th class="text-right text-h6">
             Pases
           </th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="guest in guests"
+          v-for="guest in responses"
           :key="guest.name"
         >
-          <td>{{ guest.name }}</td>
-          <td>{{ guest.asistencia }}</td>
-          <td>{{ guest.pases }}</td>
+          <td>
+            <span class="text-body-1">{{ guest.name }}</span>
+          </td>
+          <td>
+            <v-chip dense small color="green" class="text-body-1" v-if="guest.assistance == true">
+              Asistirá
+            </v-chip>
+            <v-chip dense small color="red" class="text-body-1" v-else>
+              No Asistirá
+            </v-chip>
+          </td>
+          <td class="text-right pr-10">
+            <span class="text-body-1">{{ guest.tickets }}</span>
+          </td>
         </tr>
       </tbody>
     </v-table>
@@ -35,40 +46,46 @@
       <v-sheet class="d-flex bg-blue-darken-3">
         <v-sheet class="ma-2 pa-2 me-auto text-h6 text-md-h5 text-lg-h4 bg-blue-darken-3">Totales</v-sheet>
         <v-sheet class="ma-2 pa-2 mr-16 text-h6 text-md-h5 text-lg-h4 bg-blue-darken-3">{{totals}}</v-sheet>
-        
       </v-sheet>
     </div>
   </v-card>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-        loading: false,
-        totals: 0,
-        guests: {},
-      }
-    },
-    computed: {
-      async getResponses() {
-        try {
-          this.loading = true
+import axios from 'axios'
 
-          // request data from api
-
-          this.calculateTotals
-        } catch (error) {
-          console.log(error);
-        }
-
+export default {
+  data () {
+    return {
+      loading: false,
+      totals: 0,
+      responses: {},
+    }
+  },
+  computed: {
+    async getResponses() {
+      try {
         this.loading = true
-      },
-      calculateTotals() {
 
+        const resp = await axios.get('http://localhost:8000/api/responses')
+        this.responses = resp.data.data
+
+        this.calculateTotals
+      } catch (error) {
+        console.log(error);
       }
+
+      this.loading = true
     },
-    mounted() {
-      this.getResponses
-    },
-  }
+    calculateTotals() {
+      this.responses.forEach(response => {
+        if (response.assistance == true) {
+          this.totals += response.tickets
+        }
+      });
+    }
+  },
+  mounted() {
+    this.getResponses
+  },
+}
 </script>

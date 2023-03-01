@@ -79,6 +79,7 @@ export default {
       loading: false,
       items: ['1', '2', '3', '4', '5', '6'],
       type: 'Crear',
+      action: null,
       form: {
         first_name: null,
         second_name: null,
@@ -96,11 +97,13 @@ export default {
         let resp = null
         if (this.guestId) {
           resp = await axios.put("http://localhost:8000/api/guest-lists/" + this.guestId, this.form)
+          this.action = 'update'
         } else {
           resp = await axios.post("http://localhost:8000/api/guest-lists", this.form)
+          this.action = 'create'
         }
 
-        this.$emit('snackbarNotify', {type: 'success', message: resp.data.message})
+        this.$emit('snackbarNotify', {type: 'success', message: resp.data.message, action: this.action})
       } catch (error) {
         console.log(error)
         this.$emit('snackbarNotify', {type: 'error', message: error.response.data.exception})
