@@ -145,7 +145,7 @@ export default {
       setTimeout( () => this.$router.push({ path: `/invitados/${id}`}), 5000);
     },
     required (v) {
-      return !!v || 'Field is required'
+      return !!v || 'Campo requerido'
     },
   },
 }
