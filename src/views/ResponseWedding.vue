@@ -47,35 +47,34 @@
   </v-card>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
       dialog: true,
       guestId: null,
       name: '',
-      tickets: ''
-    }
-  },
-  methods: {
-    getGuest() {
-      console.log('the id is: ',this.guestId)
-      this.name = 'Daniel'
-      this.tickets = 2
+      tickets: '',
     }
   },
   computed: {
-    startJourney() {
-      this.pageScroll
-    },
-    pageScroll() {
-      window.scrollBy(0,1)
-      let scrolldealy = setTimeout(this.pageScroll, 30);
+    async getGuest() {
+      try {
+        const resp = await axios.get("http://localhost:8000/api/guests/" + this.guestId).then((resp) => {
+          let data = resp.data.data
+          this.name = data.first_name + ' ' + data.second_name
+          this.tickets = data.tickets
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
+    
   },
   mounted() {
     this.guestId = this.$route.params.id
-    this.getGuest()
-    this.startJourney
-  },
+    this.getGuest
+  }
 }
 </script>
