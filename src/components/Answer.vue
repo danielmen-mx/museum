@@ -5,7 +5,7 @@
     :timeout="timeout"
   >
     {{message}}
-    <template v-slot:actions>
+    <template v-slot:actions data-cy="form-snackbar">
       <v-btn
           @click="visible = false"
       >
@@ -24,12 +24,13 @@
           color="success"
           size="large"
           v-bind="props"
+          data-cy="open-dialog"
         >
           Responder
         </v-btn>
       </template>
 
-      <v-card class="pa-10">
+      <v-card class="pa-10" data-cy="form-to-answer">
         <Form :request="updateDialog" @snackbarNotify="notify" />
       </v-card>
     </v-dialog>

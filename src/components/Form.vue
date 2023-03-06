@@ -31,6 +31,7 @@
                 label="Primer nombre"
                 :rules="[required]"
                 clearable
+                data-cy="input-first-name"
               ></v-text-field>
             </v-col>
             <v-col
@@ -41,6 +42,7 @@
                 v-model="form.second_name"
                 label="Segundo nombre"
                 clearable
+                data-cy="input-second-name"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -57,6 +59,7 @@
                 label="Primer apellido"
                 :rules="[required]"
                 clearable
+                data-cy="input-first-last-name"
               ></v-text-field>
             </v-col>
             <v-col
@@ -67,6 +70,7 @@
                 v-model="form.second_last_name"
                 label="Segundo apellido"
                 clearable
+                data-cy="input-second-last-name"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -78,6 +82,7 @@
               label="Asistira?"
               variant="solo"
               :rules="[required]"
+              data-cy="selector-answer"
             ></v-select>
         </v-container>
         <v-btn
@@ -89,6 +94,7 @@
           variant="elevated"
           color="success"
           @click="submit"
+          data-cy="answer-invitation"
         >
           Responder
         </v-btn>
