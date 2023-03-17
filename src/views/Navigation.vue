@@ -8,7 +8,7 @@
       >
         <v-list>
           <v-list-item
-            prepend-avatar="/public/images/bar.jpg"
+            prepend-avatar="/images/bar.jpg"
             title="Daniel & Jhovana"
             @click="changeLayout()"
           ></v-list-item>
