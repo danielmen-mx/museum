@@ -95,7 +95,7 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.delete('http://localhost:8000/api/guest-lists/' + id)
+        const resp = await axios.delete('https://apishelter.webunderdevelopment.com/api/guest-lists/' + id)
 
         this.$emit('snackbarNotify', {type: 'success', message: resp.data.message, action: 'delete'})
         this.getGuestList()
@@ -109,7 +109,7 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.get('http://localhost:8000/api/guest-lists')
+        const resp = await axios.get('https://apishelter.webunderdevelopment.com/api/guest-lists')
         this.guests = resp.data.data
 
       } catch (error) {

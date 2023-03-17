@@ -61,7 +61,7 @@ export default {
   computed: {
     async getGuest() {
       try {
-        const resp = await axios.get("http://localhost:8000/api/guests/" + this.guestId).then((resp) => {
+        const resp = await axios.get("https://apishelter.webunderdevelopment.com/api/guests/" + this.guestId).then((resp) => {
           let data = resp.data.data
           this.name = data.first_name + ' ' + data.second_name
           this.tickets = data.tickets

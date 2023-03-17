@@ -96,10 +96,10 @@ export default {
 
         let resp = null
         if (this.guestId) {
-          resp = await axios.put("http://localhost:8000/api/guest-lists/" + this.guestId, this.form)
+          resp = await axios.put("https://apishelter.webunderdevelopment.com/api/guest-lists/" + this.guestId, this.form)
           this.action = 'update'
         } else {
-          resp = await axios.post("http://localhost:8000/api/guest-lists", this.form)
+          resp = await axios.post("https://apishelter.webunderdevelopment.com/api/guest-lists", this.form)
           this.action = 'create'
         }
 
@@ -115,7 +115,7 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.get("http://localhost:8000/api/guest-lists/" + this.guestId)
+        const resp = await axios.get("https://apishelter.webunderdevelopment.com/api/guest-lists/" + this.guestId)
         this.form = resp.data.data
 
         this.type = 'Editar'

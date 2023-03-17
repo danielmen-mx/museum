@@ -66,7 +66,7 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.get('http://localhost:8000/api/responses')
+        const resp = await axios.get('https://apishelter.webunderdevelopment.com/api/responses')
         this.responses = resp.data.data
 
         this.calculateTotals

@@ -1,7 +1,15 @@
 <template>
   <div class="main-color d-flex flex-column">
-    <div class="bg- d-flex w-100 align-center px-4">
-      <strong>Follow me!</strong>
+    <div class="d-flex w-100 align-center px-4 mb-1">
+      <div>
+        <v-btn
+          color="black"
+          variant="plain"
+          @click="redirect()"
+        >
+          Siguenos!
+        </v-btn>
+      </div>
 
       <v-spacer></v-spacer>
 
@@ -29,5 +37,10 @@
         'mdi-instagram',
       ],
     }),
+    methods: {
+      redirect() {
+        this.$router.push({ path: '/admin'})
+      }
+    },
   }
 </script>

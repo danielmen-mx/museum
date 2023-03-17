@@ -135,7 +135,7 @@ export default {
       try {
         this.loading = true
 
-        const resp = await axios.post('http://localhost:8000/api/guests', this.form) // test request
+        const resp = await axios.post('https://apishelter.webunderdevelopment.com/api/guests', this.form) // test request
 
         this.request()
         this.$emit('snackbarNotify', {type: 'success', message: resp.data.message})
