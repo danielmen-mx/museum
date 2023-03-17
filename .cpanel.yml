@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home3/webunder/public_html/bodorrio
+    - /bin/cp -R images $DEPLOYPATH
