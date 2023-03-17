@@ -14,7 +14,7 @@ const routes = [
     props: route => ({...route.params, id: parseInt(route.params.id)})
   },
   {
-    path: '/administrador',
+    path: '/admin',
     component: () => import('../views/Navigation.vue'),
     children: [
       {

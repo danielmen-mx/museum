@@ -4,7 +4,7 @@
       <v-navigation-drawer
         expand-on-hover
         rail
-        color="blue-darken-4"
+        color="blue-darken-2"
       >
         <v-list>
           <v-list-item
