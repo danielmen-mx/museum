@@ -5,7 +5,7 @@
     </v-card-text>
     <v-card class="elevation-0 main-color rounded">
       <v-img
-        src="/public/images/programa-boda.png"
+        src="/images/programa-boda.png"
         max-height="95vh"
         class="rounded main-color mx-14"
       >

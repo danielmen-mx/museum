@@ -6,7 +6,7 @@
     </v-card-text>
     <v-card class=" elevation-0">
       <v-img
-        src="/public/images/invitation.jpeg"
+        src="/images/invitation.jpeg"
         max-height="95vh"
         class="rounded main-color"
       >

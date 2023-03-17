@@ -23,7 +23,7 @@
         cols="3"
       >
         <v-img
-          :src="`/public/images/caroussel/${n}.jpg`"
+          :src="`/images/caroussel/${n}.jpg`"
           aspect-ratio="1"
           cover
           :id="`index-${n}`"

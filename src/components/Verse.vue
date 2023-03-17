@@ -7,7 +7,7 @@
     </span>
     <v-card class="main-color elevation-0">
       <v-img
-        src="/public/images/abrazo.jpg"
+        src="/images/abrazo.jpg"
         max-height="60vh"
         cover
         class="ma-12 rounded"

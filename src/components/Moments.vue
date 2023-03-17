@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-img
-      src="/public/images/momento.jpg"
+      src="/images/momento.jpg"
       max-height="100vh"
       cover
       class="bg-grey-lighten-2"

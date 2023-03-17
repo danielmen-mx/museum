@@ -1,7 +1,7 @@
 <template>
   <v-card class="elevation-5">
     <v-parallax
-      src="/public/images/abrazo.jpg"
+      src="/images/abrazo.jpg"
     >
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <h1 class="text-h4 font-weight-thin mb-4">
